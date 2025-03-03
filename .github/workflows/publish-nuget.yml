@@ -22,11 +22,11 @@ jobs:
 
       # Step 3: Restore dependencies
       - name: Restore dependencies
-        run: dotnet restore WordTemplater.csproj # Replace with your .csproj file
+        run: dotnet restore src/WordTemplater/WordTemplater.csproj # Replace with your .csproj file
 
       # Step 4: Publish the project
       - name: Publish project
-        run: dotnet publish WordTemplater.csproj -c Release # Replace with your .csproj file
+        run: dotnet publish src/WordTemplater/WordTemplater.csproj -c Release # Replace with your .csproj file
 
       # Step 5: Pack the NuGet package
       - name: Pack NuGet package
@@ -35,7 +35,7 @@ jobs:
           VERSION=${{ github.event.release.tag_name }}
           # Strip the 'v' prefix if present (e.g., v2.0.1 -> 2.0.1)
           VERSION=${VERSION#v}
-          dotnet pack WordTemplater.csproj -c Release -p:Version=$VERSION --output ./nupkg
+          dotnet pack src/WordTemplater/WordTemplater.csproj -c Release -p:Version=$VERSION --output ./nupkg
 
       # Step 6: Publish to NuGet
       - name: Push to NuGet
