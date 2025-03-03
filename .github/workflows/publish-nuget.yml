@@ -35,7 +35,7 @@ jobs:
           VERSION=${{ github.event.release.tag_name }}
           # Strip the 'v' prefix if present (e.g., v2.0.1 -> 2.0.1)
           VERSION=${VERSION#v}
-          dotnet pack src/WordTemplater/WordTemplater.csproj -c Release -p:Version=$VERSION --output ./nupkg
+          dotnet pack src/WordTemplater/WordTemplater.csproj -c Release -p:Version=$VERSION -p:PackageId=WordTemplater.Test.MIT --output ./nupkg
 
       # Step 6: Publish to NuGet
       - name: Push to NuGet
